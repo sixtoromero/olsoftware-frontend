@@ -42,17 +42,19 @@ export class HomeComponent implements OnInit {
   ) { 
 
     this.myForm = fb.group({
-      Type: ['', [Validators.required]],
-      SenderId: ['', [Validators.required]],
-      AddresseeId: ['', [Validators.required]],
-      Subject: ['', [Validators.required]],
-      Body: ['', [Validators.required]]      
+      CustomerId: ['', [Validators.required]],
+      ProjectName: ['', [Validators.required]],
+      StartDate: ['', [Validators.required]],
+      EndDate: ['', [Validators.required]],
+      Price: ['', [Validators.required]],
+      NumberHours: ['', [Validators.required]],
+      Status: ['', [Validators.required]]
     });
 
   }
 
   ngOnInit(): void {    
-    this.getProjectInfoAsync();    
+    this.getProjectInfoAsync();
   }
 
   get f() {

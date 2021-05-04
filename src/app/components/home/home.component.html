@@ -19,11 +19,14 @@
     stateKey="statedemo-local">
     <ng-template pTemplate="header">
         <tr>                                        
-            <th pSortableColumn="Consecutive">Consecutivo <p-sortIcon field="Consecutive"></p-sortIcon></th>
-            <th pSortableColumn="Type">Tipo <p-sortIcon field="Type"></p-sortIcon></th>
-            <th pSortableColumn="Sender">Remitente <p-sortIcon field="Sender"></p-sortIcon></th>
-            <th pSortableColumn="Addressee">Destinatario <p-sortIcon field="Addressee"></p-sortIcon></th>
-            <th pSortableColumn="Subject">Asunto<p-sortIcon field="Subject"></p-sortIcon></th>
+            <th pSortableColumn="ProjectId">Id Proyecto <p-sortIcon field="ProjectId"></p-sortIcon></th>
+            <th pSortableColumn="ProjectName">Proyecto <p-sortIcon field="ProjectName"></p-sortIcon></th>
+            <th pSortableColumn="Customer">Cliente <p-sortIcon field="Customer"></p-sortIcon></th>
+            <th pSortableColumn="StartDate">Fecha Inicio <p-sortIcon field="StartDate"></p-sortIcon></th>
+            <th pSortableColumn="EndDate">Fecha Fin<p-sortIcon field="EndDate"></p-sortIcon></th>
+            <th pSortableColumn="Price">Precio<p-sortIcon field="Price"></p-sortIcon></th>
+            <th pSortableColumn="NumberHours">Horas<p-sortIcon field="NumberHours"></p-sortIcon></th>
+            <th pSortableColumn="Status">Estado<p-sortIcon field="Status"></p-sortIcon></th>
             <th pSortableColumn="Acciones">Acciones</th>
         </tr>
         <tr>
@@ -31,42 +34,58 @@
                 <input 
                     pInputText 
                     type="text" 
-                    (input)="dtCor.filter($event.target.value, 'Consecutive', 'contains')" 
-                    [value]="dtCor.filters['Consecutive']?.value" 
-                    placeholder="Buscar por Consecutivo" 
+                    (input)="dtCor.filter($event.target.value, 'ProjectId', 'contains')" 
+                    [value]="dtCor.filters['ProjectId']?.value" 
+                    placeholder="Buscar por Id Proyecto" 
                     class="p-column-filter">
             </th>
             <th>
                 <input 
                     pInputText 
                     type="text" 
-                    (input)="dtCor.filter($event.target.value, 'Type', 'contains')" 
-                    [value]="dtCor.filters['Type']?.value" 
-                    placeholder="Buscar por Tipo" 
+                    (input)="dtCor.filter($event.target.value, 'ProjectName', 'contains')" 
+                    [value]="dtCor.filters['ProjectName']?.value" 
+                    placeholder="Buscar por Proyecto" 
                     class="p-column-filter">
             </th>
             <th>
                 <input 
                     pInputText type="text" 
-                    (input)="dtCor.filter($event.target.value, 'Sender', 'contains')" 
-                    [value]="dtCor.filters['Sender']?.value" 
-                    placeholder="Buscar Remitente" 
+                    (input)="dtCor.filter($event.target.value, 'Customer', 'contains')" 
+                    [value]="dtCor.filters['Customer']?.value" 
+                    placeholder="Buscar por Cliente" 
                     class="p-column-filter">
             </th>
             <th>
                 <input 
                     pInputText type="text" 
-                    (input)="dtCor.filter($event.target.value, 'Addressee', 'contains')" 
-                    [value]="dtCor.filters['Addressee']?.value" 
-                    placeholder="Buscar por Destinatario" 
+                    (input)="dtCor.filter($event.target.value, 'StartDate', 'contains')" 
+                    [value]="dtCor.filters['StartDate']?.value" 
+                    placeholder="Buscar por Fecha Inicio" 
                     class="p-column-filter">
             </th>
             <th>
                 <input 
                     pInputText type="text" 
-                    (input)="dtCor.filter($event.target.value, 'Subject', 'contains')" 
-                    [value]="dtCor.filters['Subject']?.value" 
-                    placeholder="Buscar por Asunto" 
+                    (input)="dtCor.filter($event.target.value, 'EndDate', 'contains')" 
+                    [value]="dtCor.filters['EndDate']?.value" 
+                    placeholder="Buscar por Fecha Fin" 
+                    class="p-column-filter">
+            </th>
+            <th>
+                <input 
+                    pInputText type="text" 
+                    (input)="dtCor.filter($event.target.value, 'Price', 'contains')" 
+                    [value]="dtCor.filters['Price']?.value" 
+                    placeholder="Buscar por Fecha Precio"
+                    class="p-column-filter">
+            </th>
+            <th>
+                <input 
+                    pInputText type="text" 
+                    (input)="dtCor.filter($event.target.value, 'Status', 'contains')" 
+                    [value]="dtCor.filters['Status']?.value" 
+                    placeholder="Buscar por Estado"
                     class="p-column-filter">
             </th>
             <th>                                            
@@ -76,7 +95,7 @@
     <ng-template pTemplate="body" let-result>
         <tr>
             <td>                  
-                {{result.Consecutive}}
+                {{result.ProjectId}}
             </td>
             <td>
                 {{result.Type}}
