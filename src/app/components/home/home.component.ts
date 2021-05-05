@@ -183,13 +183,15 @@ export class HomeComponent implements OnInit {
         this.displayModal = true;
         this.isNew = false;
 
+        debugger;
+
         this.f.CustomerId.setValue(this.project.CustomerId);
         this.f.ProjectName.setValue(this.project.ProjectName);
         this.f.Phone.setValue(this.project.Phone);
         this.f.Price.setValue(this.project.Price);
         this.f.NumberHours.setValue(this.project.NumberHours);
-        this.f.StartDate.setValue(this.project.StartDate);
-        this.f.EndDate.setValue(this.project.EndDate);        
+        //this.f.StartDate.setValue(this.project.StartDate);
+        //this.f.EndDate.setValue(this.project.EndDate);        
         this.f.Status.setValue(this.project.Status);        
 
       }

@@ -41,7 +41,10 @@ import { InterceptorService } from './interceptors/interceptor.service';
 import { NavbarComponent } from './components/shared/navbar/navbar.component'
 import { HomeComponent  } from './components/home/home.component';
 
-import { APP_ROUTING } from './app.routes'
+import { APP_ROUTING } from './app.routes';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap'
+
+import {NgbPaginationModule, NgbAlertModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -82,7 +85,10 @@ import { APP_ROUTING } from './app.routes'
     CalendarModule,
     InputNumberModule,
     NgxSpinnerModule,
-    NgxCurrencyModule
+    NgxCurrencyModule,
+    NgbModule,
+    NgbPaginationModule, 
+    NgbAlertModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
