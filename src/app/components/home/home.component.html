@@ -98,16 +98,25 @@
                 {{result.ProjectId}}
             </td>
             <td>
-                {{result.Type}}
+                {{result.ProjectName}}
             </td>
             <td>
-                {{result.Sender}}
+                {{result.Customer}}
             </td>
             <td>
-                {{result.Addressee}}
+                {{result.StartDate}}
             </td>
             <td>
-                {{result.Subject}}
+                {{result.EndDate}}
+            </td>
+            <td>
+                {{result.Price}}
+            </td>
+            <td>
+                {{ result.NumberHours }}
+            </td>
+            <td>
+                {{ result.Status }}
             </td>
             <td>
                 <div class="row" style="text-align:center;">
@@ -155,7 +164,7 @@
         <div class="col-md-12">
             <div class="card card-success">
                 <div class="card-header">
-                    <h3 class="card-title">Crear Correspondencia</h3>
+                    <h3 class="card-title">Crear Proyecto</h3>
                 </div>
                 <div class="card-body">
                     <div class="card card-success">
@@ -171,80 +180,104 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <h6>Tipo</h6>
+                                            <h6>Proyecto</h6>
+                                            <input 
+                                                id="Subject" 
+                                                type="text" 
+                                                class="form-control"
+                                                formControlName="ProjectName"
+                                                [ngClass]="{ 'is-invalid': f.ProjectName.invalid && (f.ProjectName.dirty || f.ProjectName.touched) }" />
+                                            <div *ngIf="f.ProjectName.errors && (f.ProjectName.dirty || f.ProjectName.touched)" class="invalid-feedback">
+                                                <div>El nombre del proyecto es requerido</div>
+                                            </div>
+                                        </div>
+                                    </div>                                    
+                                    <!-- <div class="col-md-6">
+                                        <div class="form-group">
+                                            <h6>Cliente</h6>
                                             <select
                                                 class="browser-default custom-select"
-                                                formControlName="Type"
-                                                [ngClass]="{ 'is-invalid': f.Type.invalid && (f.Type.dirty || f.Type.touched) }">
-                                                <option value="CI">Interna</option>
-                                                <option value="CE">Externa</option>
+                                                formControlName="Customer"
+                                                [ngClass]="{ 'is-invalid': f.Customer.invalid && (f.Customer.dirty || f.Customer.touched) }">                                                
+                                                <option *ngFor="let item of Senders" [value]="item.Id">{{item.Id}} {{ item.Names }} {{ item.Surnames }}</option>
                                             </select>
-                                            <div *ngIf="f.Type.errors && (f.Type.dirty || f.Type.touched)" class="invalid-feedback">
+                                            <div *ngIf="f.Customer.errors && (f.Customer.dirty || f.Customer.touched)" class="invalid-feedback">
                                                 <div>El tipo es requerido</div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <div class="col-md-6">
-                                        <h6>Remitente</h6>
-                                        <div class="input-group mb-3">                                
-                                            <select
-                                                class="browser-default custom-select"
-                                                formControlName="SenderId"
-                                                [ngClass]="{ 'is-invalid': f.SenderId.invalid && (f.SenderId.dirty || f.SenderId.touched) }">
-                                                <option *ngFor="let item of Senders" [value]="item.Id">{{item.Id}} {{ item.Names }} {{ item.Surnames }}</option>
-                                            </select>                                            
-                                            <div *ngIf="f.SenderId.errors && (f.SenderId.dirty || f.SenderId.touched)" class="invalid-feedback">
-                                                <div>El tipo es requerido</div>
+                                        <h6>Fecha Inicio</h6>
+                                        <div class="input-group mb-3">                                            
+                                            <p-calendar                                                                                                 
+                                                inputId="basic"
+                                                class="form-control"
+                                                formControlName="StartDate"
+                                                [ngClass]="{ 'is-invalid': f.StartDate.invalid && (f.StartDate.dirty || f.StartDate.touched) }"></p-calendar>                                            
+                                            <div *ngIf="f.StartDate.errors && (f.StartDate.dirty || f.StartDate.touched)" class="invalid-feedback">
+                                                <div>La fecha inicio es requerida</div>
                                             </div>
                                         </div>                            
                                     </div>
                                     <div class="col-md-6">
-                                        <h6>Destinatario</h6>
-                                        <div class="input-group mb-3">                                      
-                                            <select
-                                                class="browser-default custom-select"
-                                                formControlName="AddresseeId"
-                                                [ngClass]="{ 'is-invalid': f.AddresseeId.invalid && (f.AddresseeId.dirty || f.AddresseeId.touched) }">
-                                                <option 
-                                                    *ngFor="let item of Addressees"
-                                                    [value]="item.Id">
-                                                    {{ item.Names }} {{ item.Surnames }}
-                                                </option>
-                                            </select>
-                                            <div *ngIf="f.AddresseeId.errors && (f.AddresseeId.dirty || f.AddresseeId.touched)" class="invalid-feedback">
-                                                <div>El tipo es requerido</div>
+                                        <h6>Fecha Fin</h6>
+                                        <div class="input-group mb-3">
+                                            <p-calendar
+                                                inputId="basic"
+                                                class="form-control"
+                                                formControlName="EndDate"
+                                                [ngClass]="{ 'is-invalid': f.EndDate.invalid && (f.EndDate.dirty || f.EndDate.touched) }">
+                                            </p-calendar>
+                                            <div *ngIf="f.EndDate.errors && (f.EndDate.dirty || f.EndDate.touched)" class="invalid-feedback">
+                                                <div>La fecha fin es requerida</div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <h6>Asunto</h6>
-                                            <input 
-                                                id="Subject" 
-                                                type="text" 
-                                                class="form-control" 
-                                                formControlName="Subject"
-                                                [ngClass]="{ 'is-invalid': f.Subject.invalid && (f.Subject.dirty || f.Subject.touched) }" />
-                                            <div *ngIf="f.Subject.errors && (f.Subject.dirty || f.Subject.touched)" class="invalid-feedback">
-                                                <div>La ubicación es requerida</div>
+                                            <h6>Precio</h6>
+                                            <p-inputNumber  
+                                                mode="decimal"
+                                                formControlName="Price" 
+                                                [ngClass]="{ 'is-invalid': f.Price.invalid && (f.Price.dirty || f.Price.touched) }">
+                                            </p-inputNumber>
+                                            <div *ngIf="f.Price.errors && (f.Price.dirty || f.Price.touched)" class="invalid-feedback">
+                                                <div>El precio es requerido</div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <h6>Mensaje</h6>
-                                            <textarea
-                                                id="Body" 
-                                                type="text" 
-                                                class="form-control" 
-                                                formControlName="Body"
-                                                [ngClass]="{ 'is-invalid': f.Body.invalid && (f.Body.dirty || f.Body.touched) }">
-                                            </textarea>
-                                            <div *ngIf="f.Body.errors && (f.Body.dirty || f.Body.touched)" class="invalid-feedback">
-                                                <div>La ubicación es requerida</div>
+                                            <h6>Número de Horas</h6>
+                                            <p-inputNumber  
+                                                mode="decimal" 
+                                                inputId="withoutgrouping" 
+                                                formControlName="NumberHours" 
+                                                [ngClass]="{ 'is-invalid': f.NumberHours.invalid && (f.NumberHours.dirty || f.NumberHours.touched) }">
+                                                [useGrouping]="false">
+                                            </p-inputNumber>
+                                            <div *ngIf="f.NumberHours.errors && (f.NumberHours.dirty || f.NumberHours.touched)" class="invalid-feedback">
+                                                <div>El número de horas es requerido</div>
                                             </div>
                                         </div>
-                                    </div>                                    
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <h6>Estado</h6>
+                                            <select
+                                                class="browser-default custom-select"
+                                                formControlName="Status"
+                                                [ngClass]="{ 'is-invalid': f.Status.invalid && (f.Status.dirty || f.Status.touched) }">
+                                                <option value="N">En Negociación</option>
+                                                <option value="P">En Proceso</option>
+                                                <option value="T">Terminado</option>
+                                                <option value="A">Anulado</option>
+                                            </select>
+                                            <div *ngIf="f.Status.errors && (f.Status.dirty || f.Status.touched)" class="invalid-feedback">
+                                                <div>El estado es requerido</div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>     
                             </form>                
                         </div>

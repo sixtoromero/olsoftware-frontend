@@ -25,6 +25,8 @@ import { VirtualScrollerModule } from 'primeng/virtualscroller'
 import {TableModule} from 'primeng/table';
 import { ToolbarModule } from 'primeng/toolbar';
 import { DropdownModule } from 'primeng/dropdown';
+import { CalendarModule } from 'primeng/calendar';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -38,11 +40,6 @@ import { NgxCurrencyModule } from "ngx-currency";
 import { InterceptorService } from './interceptors/interceptor.service';
 import { NavbarComponent } from './components/shared/navbar/navbar.component'
 import { HomeComponent  } from './components/home/home.component';
-import { ChefComponent } from './components/chef/chef.component';
-import { WaiterComponent } from './components/waiter/waiter.component';
-import { CustomerComponent } from './components/customer/customer.component';
-import { TableComponent } from './components/table/table.component';
-import { BillComponent } from './components/bill/bill.component';
 
 
 
@@ -52,7 +49,8 @@ import { APP_ROUTING } from './app.routes'
   declarations: [
     AppComponent,    
     HomeComponent, 
-    NavbarComponent, ChefComponent, WaiterComponent, CustomerComponent, TableComponent, BillComponent
+    NavbarComponent
+    //NavbarComponent, ChefComponent, WaiterComponent, CustomerComponent, TableComponent, BillComponent
   ],
   imports: [
     BrowserModule,
@@ -83,6 +81,8 @@ import { APP_ROUTING } from './app.routes'
     TableModule,
     ToolbarModule,
     DropdownModule,
+    CalendarModule,
+    InputNumberModule,
     NgxSpinnerModule,
     NgxCurrencyModule
   ],

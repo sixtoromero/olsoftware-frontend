@@ -15,6 +15,7 @@ import { InfoProjectModel } from 'src/app/models/infoproject.model';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
+  styleUrls: ['./home.component.scss'],
   providers: [CustomerService, ProjectService, GeneralService, MessageService, ConfirmationService]
 })
 export class HomeComponent implements OnInit {
