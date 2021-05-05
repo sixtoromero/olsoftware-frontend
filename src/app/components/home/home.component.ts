@@ -179,20 +179,18 @@ export class HomeComponent implements OnInit {
 
         this.project = response["Data"] as ProjectModel;
 
-        console.log('Project por ID', this.project);        
+        //this.selectInfoPro = item;
+        this.displayModal = true;
+        this.isNew = false;
 
         this.f.CustomerId.setValue(this.project.CustomerId);
         this.f.ProjectName.setValue(this.project.ProjectName);
         this.f.Phone.setValue(this.project.Phone);
-        this.f.StartDate.setValue(this.project.StartDate);
-        this.f.EndDate.setValue(this.project.EndDate);
         this.f.Price.setValue(this.project.Price);
         this.f.NumberHours.setValue(this.project.NumberHours);
-        this.f.Status.setValue(this.project.Status);
-
-        //this.selectInfoPro = item;
-        this.displayModal = true;
-        this.isNew = false;
+        this.f.StartDate.setValue(this.project.StartDate);
+        this.f.EndDate.setValue(this.project.EndDate);        
+        this.f.Status.setValue(this.project.Status);        
 
       }
     }, error => {

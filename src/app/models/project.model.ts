@@ -12,8 +12,6 @@ export class ProjectModel implements Deserializable  {
     public NumberHours: number;
     public Status: string;
     public Date: Date;
-
-    public InfoProjects: InfoProjectModel[];
     
     deserialize(input: any) {
         Object.assign(this, input);
