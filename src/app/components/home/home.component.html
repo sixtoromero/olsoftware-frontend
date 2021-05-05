@@ -21,6 +21,7 @@
         <tr>
             <th pSortableColumn="ProjectName">Proyecto <p-sortIcon field="ProjectName"></p-sortIcon></th>
             <th pSortableColumn="Customer">Cliente <p-sortIcon field="Customer"></p-sortIcon></th>
+            <th pSortableColumn="Phone">Teléfono <p-sortIcon field="Phone"></p-sortIcon></th>
             <th pSortableColumn="StartDate">Fecha Inicio <p-sortIcon field="StartDate"></p-sortIcon></th>
             <th pSortableColumn="EndDate">Fecha Fin<p-sortIcon field="EndDate"></p-sortIcon></th>
             <th pSortableColumn="Price">Precio<p-sortIcon field="Price"></p-sortIcon></th>
@@ -44,6 +45,14 @@
                     (input)="dtCor.filter($event.target.value, 'Customer', 'contains')" 
                     [value]="dtCor.filters['Customer']?.value" 
                     placeholder="Buscar por Cliente" 
+                    class="p-column-filter">
+            </th>
+            <th>
+                <input 
+                    pInputText type="text" 
+                    (input)="dtCor.filter($event.target.value, 'Phone', 'contains')" 
+                    [value]="dtCor.filters['Phone']?.value" 
+                    placeholder="Buscar por Phone" 
                     class="p-column-filter">
             </th>
             <th>
@@ -99,6 +108,9 @@
                 {{result.Customer}}
             </td>
             <td>
+                {{result.Phone}}
+            </td>
+            <td>
                 {{result.StartDate}}
             </td>
             <td>
@@ -115,7 +127,7 @@
             </td>
             <td>
                 <div class="row" style="text-align:center;">
-                    <div class="col-md-2">
+                    <!-- <div class="col-md-2">
                         <button 
                             pButton
                             pRipple
@@ -124,14 +136,14 @@
                             (click)="confirmDelete(result.Id)"
                             class="p-button-rounded p-button-info p-button-danger">
                         </button>
-                    </div>
+                    </div> -->
                     <div class="col-md-2">
                         <button 
                             pButton
                             pRipple
                             type="button"
                             icon="pi pi-pencil"
-                            (click)="editModal(result)"
+                            (click)="editModal(result.ProjectId)"
                             class="p-button-rounded p-button-info p-button-success">
                         </button>
                     </div>
@@ -187,20 +199,20 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="col-md-6">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <h6>Cliente</h6>
                                             <select
                                                 class="browser-default custom-select"
-                                                formControlName="Customer"
-                                                [ngClass]="{ 'is-invalid': f.Customer.invalid && (f.Customer.dirty || f.Customer.touched) }">                                                
-                                                <option *ngFor="let item of Senders" [value]="item.Id">{{item.Id}} {{ item.Names }} {{ item.Surnames }}</option>
+                                                formControlName="CustomerId"
+                                                [ngClass]="{ 'is-invalid': f.CustomerId.invalid && (f.CustomerId.dirty || f.CustomerId.touched) }">                                                
+                                                <option *ngFor="let item of customers" [value]="item.Id">{{ item.Names }} {{ item.Surnames }}</option>
                                             </select>
-                                            <div *ngIf="f.Customer.errors && (f.Customer.dirty || f.Customer.touched)" class="invalid-feedback">
+                                            <div *ngIf="f.CustomerId.errors && (f.CustomerId.dirty || f.CustomerId.touched)" class="invalid-feedback">
                                                 <div>El tipo es requerido</div>
                                             </div>
                                         </div>
-                                    </div> -->
+                                    </div>
                                     <div class="col-md-6">
                                         <h6>Fecha Inicio</h6>
                                         <p-calendar

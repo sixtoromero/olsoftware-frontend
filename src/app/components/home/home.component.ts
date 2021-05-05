@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
 
   //publiInfoProjects: InfoProjectModel[] = [];
   results: InfoProjectModel[] = [];  
+  customers: CustomerModel[] = [];
 
   selectInfoPro: InfoProjectModel;
 
@@ -55,6 +56,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {    
+    this.getAllCustomer();
     this.getProjectInfoAsync();
   }
 
@@ -74,7 +76,7 @@ export class HomeComponent implements OnInit {
     this.ngxService.start();
     const model = this.prepareSave();    
     model.Id = 0;
-    this.customerService.insert(model)
+    this.projectService.insert(model)
     .pipe(finalize(() => this.ngxService.stop()))
     .subscribe(response => {
       if (response["IsSuccess"]){        
@@ -92,7 +94,7 @@ export class HomeComponent implements OnInit {
   update() {
     this.ngxService.start();
     const model = this.prepareSave();    
-    this.customerService.update(model)
+    this.projectService.update(model)
     .pipe(finalize(() => this.ngxService.stop()))
     .subscribe(response => {
       if (response["IsSuccess"]){        
@@ -115,6 +117,22 @@ export class HomeComponent implements OnInit {
       console.log('Respuesta', response);
       if (response["IsSuccess"]) {
         this.results = response["Data"] as InfoProjectModel[];
+      }
+    }, error => {
+      this.ngxService.stop()
+      this.general.showError('Ha ocurrido un error inesperado.');
+    });
+  }
+
+  getAllCustomer() {
+    this.ngxService.start();
+    this.customerService.getAll()
+    .pipe(finalize(() => this.ngxService.stop()))
+    .subscribe(response => {
+      console.log('Respuesta', response);
+      if (response["IsSuccess"]) {
+        this.customers = response["Data"] as CustomerModel[];
+        console.log('Customer', this.customers);
       }
     }, error => {
       this.ngxService.stop()
@@ -150,6 +168,8 @@ export class HomeComponent implements OnInit {
 
   editModal(Id: number) {
 
+    console.log('ID SELECCIONADO', Id);
+    
     // this.f.Type.setValue(item.Names);
     // this.f.SenderId.setValue(item.Surnames);
     // this.f.AddresseeId.setValue(item.Email);
@@ -162,8 +182,8 @@ export class HomeComponent implements OnInit {
 
   }
 
-  private prepareSave(): CustomerModel {
-    return new CustomerModel().deserialize(this.myForm.value);
+  private prepareSave(): ProjectModel {
+    return new ProjectModel().deserialize(this.myForm.value);
   }
 
 

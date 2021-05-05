@@ -22,8 +22,12 @@ export class CustomerService {
 
     constructor(private _http: HttpClient) { }
 
-    getTableAll(): Observable<Observable<ResponseModel<CustomerModel[]>>> {        
+    getAll(): Observable<Observable<ResponseModel<CustomerModel[]>>> {        
         return this._http.get<Observable<ResponseModel<CustomerModel[]>>>(`${this.endPoint}/GetAllAsync` );
+    }
+
+    getById(Id: number): Observable<Observable<ResponseModel<CustomerModel[]>>> {        
+        return this._http.get<Observable<ResponseModel<CustomerModel[]>>>(`${this.endPoint}/GetAllAsync/${Id}` );
     }
 
     insert(model: CustomerModel): Observable<Observable<ResponseModel<string>>> {
