@@ -41,8 +41,6 @@ import { InterceptorService } from './interceptors/interceptor.service';
 import { NavbarComponent } from './components/shared/navbar/navbar.component'
 import { HomeComponent  } from './components/home/home.component';
 
-
-
 import { APP_ROUTING } from './app.routes'
 
 @NgModule({

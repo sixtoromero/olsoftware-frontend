@@ -208,29 +208,27 @@
                                     </div> -->
                                     <div class="col-md-6">
                                         <h6>Fecha Inicio</h6>
-                                        <div class="input-group mb-3">                                            
-                                            <p-calendar                                                                                                 
+                                        <p-calendar
                                                 inputId="basic"
-                                                class="form-control"
                                                 formControlName="StartDate"
+                                                [style]="{'width':'100%'}" 
+                                                [inputStyle]="{'width':'100%'}"
                                                 [ngClass]="{ 'is-invalid': f.StartDate.invalid && (f.StartDate.dirty || f.StartDate.touched) }"></p-calendar>                                            
                                             <div *ngIf="f.StartDate.errors && (f.StartDate.dirty || f.StartDate.touched)" class="invalid-feedback">
                                                 <div>La fecha inicio es requerida</div>
                                             </div>
-                                        </div>                            
                                     </div>
                                     <div class="col-md-6">
                                         <h6>Fecha Fin</h6>
-                                        <div class="input-group mb-3">
-                                            <p-calendar
-                                                inputId="basic"
-                                                class="form-control"
-                                                formControlName="EndDate"
-                                                [ngClass]="{ 'is-invalid': f.EndDate.invalid && (f.EndDate.dirty || f.EndDate.touched) }">
-                                            </p-calendar>
-                                            <div *ngIf="f.EndDate.errors && (f.EndDate.dirty || f.EndDate.touched)" class="invalid-feedback">
-                                                <div>La fecha fin es requerida</div>
-                                            </div>
+                                        <p-calendar
+                                            inputId="basic"
+                                            formControlName="EndDate"
+                                            [style]="{'width':'100%'}" 
+                                            [inputStyle]="{'width':'100%'}"
+                                            [ngClass]="{ 'is-invalid': f.EndDate.invalid && (f.EndDate.dirty || f.EndDate.touched) }">
+                                        </p-calendar>
+                                        <div *ngIf="f.EndDate.errors && (f.EndDate.dirty || f.EndDate.touched)" class="invalid-feedback">
+                                            <div>La fecha fin es requerida</div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -238,7 +236,9 @@
                                             <h6>Precio</h6>
                                             <p-inputNumber  
                                                 mode="decimal"
-                                                formControlName="Price" 
+                                                [style]="{'width':'100%'}" 
+                                                [inputStyle]="{'width':'100%'}"
+                                                formControlName="Price"
                                                 [ngClass]="{ 'is-invalid': f.Price.invalid && (f.Price.dirty || f.Price.touched) }">
                                             </p-inputNumber>
                                             <div *ngIf="f.Price.errors && (f.Price.dirty || f.Price.touched)" class="invalid-feedback">
@@ -246,11 +246,13 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-12">
+                                    <div class="col-md-6">
                                         <div class="form-group">
                                             <h6>Número de Horas</h6>
                                             <p-inputNumber  
                                                 mode="decimal" 
+                                                [style]="{'width':'100%'}" 
+                                                [inputStyle]="{'width':'100%'}"
                                                 inputId="withoutgrouping" 
                                                 formControlName="NumberHours" 
                                                 [ngClass]="{ 'is-invalid': f.NumberHours.invalid && (f.NumberHours.dirty || f.NumberHours.touched) }">
