@@ -18,8 +18,7 @@
     stateStorage="local"
     stateKey="statedemo-local">
     <ng-template pTemplate="header">
-        <tr>                                        
-            <th pSortableColumn="ProjectId">Id Proyecto <p-sortIcon field="ProjectId"></p-sortIcon></th>
+        <tr>
             <th pSortableColumn="ProjectName">Proyecto <p-sortIcon field="ProjectName"></p-sortIcon></th>
             <th pSortableColumn="Customer">Cliente <p-sortIcon field="Customer"></p-sortIcon></th>
             <th pSortableColumn="StartDate">Fecha Inicio <p-sortIcon field="StartDate"></p-sortIcon></th>
@@ -30,15 +29,6 @@
             <th pSortableColumn="Acciones">Acciones</th>
         </tr>
         <tr>
-            <th>
-                <input 
-                    pInputText 
-                    type="text" 
-                    (input)="dtCor.filter($event.target.value, 'ProjectId', 'contains')" 
-                    [value]="dtCor.filters['ProjectId']?.value" 
-                    placeholder="Buscar por Id Proyecto" 
-                    class="p-column-filter">
-            </th>
             <th>
                 <input 
                     pInputText 
@@ -77,7 +67,15 @@
                     pInputText type="text" 
                     (input)="dtCor.filter($event.target.value, 'Price', 'contains')" 
                     [value]="dtCor.filters['Price']?.value" 
-                    placeholder="Buscar por Fecha Precio"
+                    placeholder="Buscar por Precio"
+                    class="p-column-filter">
+            </th>
+            <th>
+                <input 
+                    pInputText type="text" 
+                    (input)="dtCor.filter($event.target.value, 'NumberHours', 'contains')" 
+                    [value]="dtCor.filters['NumberHours']?.value" 
+                    placeholder="Buscar por Hora"
                     class="p-column-filter">
             </th>
             <th>
@@ -88,15 +86,12 @@
                     placeholder="Buscar por Estado"
                     class="p-column-filter">
             </th>
-            <th>                                            
+            <th>
             </th>
         </tr>
     </ng-template>
     <ng-template pTemplate="body" let-result>
         <tr>
-            <td>                  
-                {{result.ProjectId}}
-            </td>
             <td>
                 {{result.ProjectName}}
             </td>
@@ -191,7 +186,7 @@
                                                 <div>El nombre del proyecto es requerido</div>
                                             </div>
                                         </div>
-                                    </div>                                    
+                                    </div>
                                     <!-- <div class="col-md-6">
                                         <div class="form-group">
                                             <h6>Cliente</h6>

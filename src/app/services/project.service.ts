@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 
 import { ResponseModel } from '../models/response.model';
 import { ProjectModel } from '../models/project.model';
+import { InfoProjectModel } from '../models/infoproject.model';
 
 const httpOptions = {
     headers: new HttpHeaders({
@@ -19,11 +20,13 @@ const httpOptions = {
 export class ProjectService {
     
     endPoint = `${environment.apiURL}/Project`;
+    endPointInfo = `${environment.apiURL}/Info`;
 
     constructor(private _http: HttpClient) { }
 
-    getProjectInfo(): Observable<Observable<ResponseModel<ProjectModel[]>>> {        
-        return this._http.get<Observable<ResponseModel<ProjectModel[]>>>(`${this.endPoint}/GetProjectInfoAsync` );
+    getProjectInfo(): Observable<Observable<ResponseModel<InfoProjectModel[]>>> {        
+        console.log('URL', `${this.endPointInfo}/GetProjectInfoAsync`);
+        return this._http.get<Observable<ResponseModel<InfoProjectModel[]>>>(`${this.endPointInfo}/GetProjectInfoAsync` );
     }
 
     getById(Id: number): Observable<Observable<ResponseModel<ProjectModel>>> {        

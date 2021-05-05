@@ -113,10 +113,8 @@ export class HomeComponent implements OnInit {
     .pipe(finalize(() => this.ngxService.stop()))
     .subscribe(response => {
       console.log('Respuesta', response);
-      if (response["IsSuccess"]) {                
-        let result: ProjectModel;        
-        result = response["Data"] as ProjectModel;// InfoProjectModel[];
-        this.results = result.InfoProjects;
+      if (response["IsSuccess"]) {
+        this.results = response["Data"] as InfoProjectModel[];
       }
     }, error => {
       this.ngxService.stop()
