@@ -182,9 +182,8 @@ export class HomeComponent implements OnInit {
         //this.selectInfoPro = item;
         this.displayModal = true;
         this.isNew = false;
-
-        debugger;
-
+        
+        
         this.f.CustomerId.setValue(this.project.CustomerId);
         this.f.ProjectName.setValue(this.project.ProjectName);
         this.f.Phone.setValue(this.project.Phone);
