@@ -256,7 +256,7 @@
                                                 inputId="withoutgrouping" 
                                                 formControlName="NumberHours" 
                                                 [ngClass]="{ 'is-invalid': f.NumberHours.invalid && (f.NumberHours.dirty || f.NumberHours.touched) }">
-                                                [useGrouping]="false">
+                                                
                                             </p-inputNumber>
                                             <div *ngIf="f.NumberHours.errors && (f.NumberHours.dirty || f.NumberHours.touched)" class="invalid-feedback">
                                                 <div>El número de horas es requerido</div>
