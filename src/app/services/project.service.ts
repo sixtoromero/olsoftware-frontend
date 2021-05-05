@@ -24,13 +24,12 @@ export class ProjectService {
 
     constructor(private _http: HttpClient) { }
 
-    getProjectInfo(): Observable<Observable<ResponseModel<InfoProjectModel[]>>> {        
-        console.log('URL', `${this.endPointInfo}/GetProjectInfoAsync`);
+    getProjectInfo(): Observable<Observable<ResponseModel<InfoProjectModel[]>>> {
         return this._http.get<Observable<ResponseModel<InfoProjectModel[]>>>(`${this.endPointInfo}/GetProjectInfoAsync` );
     }
 
     getById(Id: number): Observable<Observable<ResponseModel<ProjectModel>>> {        
-        return this._http.get<Observable<ResponseModel<ProjectModel>>>(`${this.endPoint}/GetAsyncByUserId/${Id}` );
+        return this._http.get<Observable<ResponseModel<ProjectModel>>>(`${this.endPoint}/GetAsync/${Id}` );
     }
 
     insert(model: ProjectModel): Observable<Observable<ResponseModel<string>>> {

@@ -24,6 +24,7 @@ export class HomeComponent implements OnInit {
 
   //publiInfoProjects: InfoProjectModel[] = [];
   results: InfoProjectModel[] = [];  
+  project: ProjectModel;
   customers: CustomerModel[] = [];
 
   selectInfoPro: InfoProjectModel;
@@ -46,7 +47,8 @@ export class HomeComponent implements OnInit {
     this.myForm = fb.group({
       CustomerId: ['', [Validators.required]],
       ProjectName: ['', [Validators.required]],
-      StartDate: ['', [Validators.required]],
+      Phone: ['', [Validators.required]],
+      StartDate: ['', [Validators.required]],      
       EndDate: ['', [Validators.required]],
       Price: ['', [Validators.required]],
       NumberHours: ['', [Validators.required]],
@@ -168,17 +170,37 @@ export class HomeComponent implements OnInit {
 
   editModal(Id: number) {
 
-    console.log('ID SELECCIONADO', Id);
-    
-    // this.f.Type.setValue(item.Names);
-    // this.f.SenderId.setValue(item.Surnames);
-    // this.f.AddresseeId.setValue(item.Email);
-    // this.f.Subject.setValue(item.Address);
-    // this.f.Body.setValue(item.Phone);
+    this.ngxService.start();
+    this.projectService.getById(Id)
+    .pipe(finalize(() => this.ngxService.stop()))
+    .subscribe(response => {
+      console.log('Respuesta', response);
+      if (response["IsSuccess"]) {
 
-    // this.selectInfoPro = item;
-    // this.displayModal = true;
-    // this.isNew = false;
+        this.project = response["Data"] as ProjectModel;
+
+        console.log('Project por ID', this.project);        
+
+        this.f.CustomerId.setValue(this.project.CustomerId);
+        this.f.ProjectName.setValue(this.project.ProjectName);
+        this.f.Phone.setValue(this.project.Phone);
+        this.f.StartDate.setValue(this.project.StartDate);
+        this.f.EndDate.setValue(this.project.EndDate);
+        this.f.Price.setValue(this.project.Price);
+        this.f.NumberHours.setValue(this.project.NumberHours);
+        this.f.Status.setValue(this.project.Status);
+
+        //this.selectInfoPro = item;
+        this.displayModal = true;
+        this.isNew = false;
+
+      }
+    }, error => {
+      this.ngxService.stop()
+      this.general.showError('Ha ocurrido un error inesperado.');
+    });
+
+    
 
   }
 

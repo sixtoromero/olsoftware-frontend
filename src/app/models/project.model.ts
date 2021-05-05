@@ -5,6 +5,7 @@ export class ProjectModel implements Deserializable  {
     public Id: number;
     public CustomerId: number;
     public ProjectName: string;
+    public Phone: string;
     public StartDate: Date;
     public EndDate: Date;
     public Price: number;

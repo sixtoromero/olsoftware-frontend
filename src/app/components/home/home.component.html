@@ -214,6 +214,20 @@
                                         </div>
                                     </div>
                                     <div class="col-md-6">
+                                        <div class="form-group">
+                                            <h6>Teléfono</h6>
+                                            <input 
+                                                id="Subject" 
+                                                type="text" 
+                                                class="form-control"
+                                                formControlName="Phone"
+                                                [ngClass]="{ 'is-invalid': f.Phone.invalid && (f.Phone.dirty || f.Phone.touched) }" />
+                                            <div *ngIf="f.Phone.errors && (f.Phone.dirty || f.Phone.touched)" class="invalid-feedback">
+                                                <div>El teléfono es requerido</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
                                         <h6>Fecha Inicio</h6>
                                         <p-calendar
                                                 inputId="basic"
